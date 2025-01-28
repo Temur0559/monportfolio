@@ -31,7 +31,7 @@ header {
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -92,6 +92,19 @@ h3 {
     color: #2c3e50; /* Gris foncé pour sous-titres */
     margin-bottom: 20px;
     text-align: center;
+}
+
+/* Code Styling (Projet 2) */
+code {
+    display: block;
+    white-space: pre-wrap; /* Permet de revenir à la ligne automatiquement pour le code */
+    word-wrap: break-word; /* Empêche le débordement du texte */
+    padding: 15px;
+    background: #2c3e50; /* Fond foncé pour le code */
+    color: white; /* Texte clair */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace; /* Police spécifique au code */
 }
 
 /* Boutons */
@@ -229,5 +242,12 @@ footer {
     img {
         width: 100%; /* S'assurer que les images s'adaptent à la largeur */
         height: auto; /* Garder les proportions */
+    }
+
+    /* Ajuster le code pour éviter le débordement */
+    code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 14px; /* Réduire la taille du texte du code */
     }
 }
