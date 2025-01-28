@@ -60,37 +60,7 @@
         <section>
             <h2>Exemple de code pour la stratégie optimisée</h2>
             <p>Voici un extrait du code pour la stratégie optimisée, qui analyse le feedback à chaque tentative :</p>
-            <pre>
-                def strategie_avancee(tour: int, historique_propositions: list, historique_resultats: list, taille: int, couleurs: list, espace_restant: list) -> list:
-    
-                #     Filtre les combinaisons possibles en fonction des résultats précédents.
-                #     tour: Numéro du tour en cours.
-                #     historique_propositions: Liste des propositions déjà faites.
-                #     historique_resultats: Liste des résultats obtenus.
-                #     taille: Taille de la combinaison.
-                #     couleurs: Palette des couleurs disponibles.
-                #     espace_restant: Liste des combinaisons encore possibles.
-                #     La prochaine combinaison à proposer.
-                    
-                    if tour == 1:
-                        espace_restant.append(creer_toutes_combinaisons(couleurs, taille))
-                        return [choice(couleurs) for _ in range(taille)]
-                
-                    dernier_resultat = historique_resultats[-1]
-                    derniere_proposition = historique_propositions[-1]
-                
-                    # Mise à jour des combinaisons possibles
-                    espace_restant[0] = [combinaison for combinaison in espace_restant[0] \
-                                         if testerCombinaison(combinaison, derniere_proposition) == dernier_resultat]
-                
-                    if espace_restant[0]:
-                        return espace_restant[0][0]  # Retourne une combinaison valide
-                
-                    # Regénère toutes les combinaisons si aucune n'est trouvée
-                    espace_restant[0] = creer_toutes_combinaisons(couleurs, taille)
-                    return espace_restant[0][0]
-                
-            </pre>
+            <img src="strategie.PNG" alt="Stratégie optimisé" width="600">
             <p>Cette fonction permet d'éliminer les combinaisons qui ne correspondent pas au feedback reçu, en réduisant progressivement l'espace de recherche.</p>
         </section>
 
