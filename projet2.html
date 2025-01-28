@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2 : Comparaison d'approches algorithmiques pour résoudre Mastermind</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Projet 2 : Comparaison d'approches algorithmiques pour résoudre Mastermind</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cv.html">Mon CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="projet1.html">Projet 1</a></li>
+                <li><a href="projet3.html">Projet 3</a></li>
+                <li><a href="projet4.html">Projet 4</a></li>
+                <li><a href="projet5.html">Projet 5</a></li>
+                <li><a href="projet6.html">Projet 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Contexte et objectif</h2>
+            <p>Dans ce projet, l'objectif était de développer et de comparer différentes stratégies algorithmiques pour résoudre le jeu **Mastermind**. À partir d'un fichier de données contenant des configurations du jeu, plusieurs approches ont été mises en place pour deviner la combinaison secrète en un nombre limité d'essais.</p>
+            <p>Le défi consistait à implémenter et tester différentes stratégies, puis à analyser laquelle serait la plus performante en termes de nombre d'essais et de rapidité.</p>
+        </section>
+
+        <section>
+            <h2>Les stratégies développées</h2>
+            <p>J'ai mis en place plusieurs stratégies pour résoudre le jeu Mastermind. Chaque stratégie utilise une approche différente pour déterminer la combinaison secrète. Voici les stratégies principales que j'ai développées :</p>
+            <ul>
+                <li><strong>Stratégie Aléatoire :</strong> Cette stratégie génère une combinaison en choisissant des
+                    couleurs au hasard à chaque tour, sans considérer les résultats
+                    précédents.</li>
+                <li><strong>Stratégie Basique (« moins efficace »)
+                    :</strong> Cette stratégie génère toutes les combinaisons possibles, puis
+                    élimine celles incompatibles avec les résultats précédents.
+                    </li>
+                <li><strong>Stratégie optimisée :</strong> Elle repose sur un filtrage avancé, priorisant les combinaisons
+                    selon la fréquence des couleurs.
+                    </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Approche de la comparaison</h2>
+            <p>Pour comparer ces stratégies, j'ai utilisé un fichier de données contenant des informations sur plusieurs jeux Mastermind, avec des configurations de combinaisons secrètes et les tentatives effectuées pour les deviner. Les critères de comparaison sont :</p>
+            <ul>
+                <li><strong>Nombre d'essais :</strong> Le nombre de tentatives nécessaires pour trouver la combinaison secrète.</li>
+                <li><strong>Temps d'exécution :</strong> Le temps qu'il faut pour résoudre le jeu avec chaque stratégie.</li>
+                <li><strong>Complexité algorithmique :</strong> La comparaison des stratégies en fonction de leur complexité et de leur efficacité pour résoudre des jeux avec différentes tailles de combinaisons ou nombres d'essais.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Exemple de code pour la stratégie optimisée</h2>
+            <p>Voici un extrait du code pour la stratégie optimisée, qui analyse le feedback à chaque tentative :</p>
+            <pre>
+                def strategie_avancee(tour: int, historique_propositions: list, historique_resultats: list, taille: int, couleurs: list, espace_restant: list) -> list:
+    
+                #     Filtre les combinaisons possibles en fonction des résultats précédents.
+                #     tour: Numéro du tour en cours.
+                #     historique_propositions: Liste des propositions déjà faites.
+                #     historique_resultats: Liste des résultats obtenus.
+                #     taille: Taille de la combinaison.
+                #     couleurs: Palette des couleurs disponibles.
+                #     espace_restant: Liste des combinaisons encore possibles.
+                #     La prochaine combinaison à proposer.
+                    
+                    if tour == 1:
+                        espace_restant.append(creer_toutes_combinaisons(couleurs, taille))
+                        return [choice(couleurs) for _ in range(taille)]
+                
+                    dernier_resultat = historique_resultats[-1]
+                    derniere_proposition = historique_propositions[-1]
+                
+                    # Mise à jour des combinaisons possibles
+                    espace_restant[0] = [combinaison for combinaison in espace_restant[0] \
+                                         if testerCombinaison(combinaison, derniere_proposition) == dernier_resultat]
+                
+                    if espace_restant[0]:
+                        return espace_restant[0][0]  # Retourne une combinaison valide
+                
+                    # Regénère toutes les combinaisons si aucune n'est trouvée
+                    espace_restant[0] = creer_toutes_combinaisons(couleurs, taille)
+                    return espace_restant[0][0]
+                
+            </pre>
+            <p>Cette fonction permet d'éliminer les combinaisons qui ne correspondent pas au feedback reçu, en réduisant progressivement l'espace de recherche.</p>
+        </section>
+
+        <section>
+            <h2>Résultats obtenus</h2>
+            <p>Les résultats de mes tests ont montré que la stratégie optimisée basée sur l'algorithme de Knuth était la plus efficace, nécessitant moins d'essais et moins de temps pour résoudre le jeu. Voici un résumé des performances :</p>
+            <ul>
+                <li><strong>Stratégie Aléatoire :</strong>Bien qu'elle soit simple à implémenter, elle ne prend pas en
+                    compte les résultats des tentatives précédentes, ce qui la rend
+                    inefficace en termes de nombre d'essais.</li>
+                <li><strong>Stratégie Basique (« moins efficace ») :</strong> Plus efficace que la stratégie aléatoire, elle permet de réduire le nombre d'essais, mais elle reste moins performante que l'algorithme optimisé.</li>
+                <li><strong>Stratégie optimisée :</strong> La plus rapide et efficace, permettant de résoudre le jeu en un nombre minimal d'essais, avec une complexité plus faible que les autres méthodes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Visualisation des résultats</h2>
+            <p>Voici un tableau illustrant le nombre d'essais nécessaires pour résoudre plusieurs jeux Mastermind avec les différentes stratégies :</p>
+            <img src="images/Tableau.PNG" alt="Comparaison des stratégies de Mastermind" width="600">
+        </section>
+        <section>
+            <h3>Ce que j'ai aimé</h3>
+            <p>- La mise en place de la logique du jeu et l'interaction avec les joueurs.</p>
+            <p>- L'utilisation de Pygame pour créer une interface graphique pour le jeu.</p>
+            <p>- Résoudre un problème concret et voir l'aboutissement du projet fonctionner.</p>
+        
+            <h3>Ce que j'ai pas aimé</h3>
+            <p>- La complexité de la gestion de l'interface utilisateur avec Pygame, qui était un peu contraignante au début.</p>
+            <p>- La difficulté de faire fonctionner parfaitement le jeu sans bugs malgré mes efforts pour gérer toutes les interactions possibles.</p>
+        </section>
+        <section>
+            <h2>Conclusion</h2>
+            <p>Ce projet m'a permis de mettre en œuvre plusieurs stratégies algorithmiques pour résoudre le jeu Mastermind. L'implémentation de ces stratégies et leur comparaison m'a aidé à mieux comprendre les concepts de réduction d'espace de recherche, d'optimisation et d'analyse des performances. L'algorithme de Knuth s'est révélé être la méthode la plus performante pour résoudre ce type de problème dans un temps optimal.</p>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mon Portfolio</p>
+    </footer>
+</body>
+</html>

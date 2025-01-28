@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 4 : Modèle Relationnel du Concert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Modèle Relationnel pour le Concert</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cv.html">Mon CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="projet1.html">Projet 1</a></li>
+                <li><a href="projet2.html">Projet 2</a></li>
+                <li><a href="projet3.html">Projet 3</a></li>
+                <li><a href="projet5.html">Projet 5</a></li>
+                <li><a href="projet6.html">Projet 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Diagramme de Classe</h2>
+            <p>Voici le diagramme de classe qui représente les entités de notre projet de concert, ainsi que leurs relations :</p>
+            <img src="images/modele.PNG" alt="Diagramme de classe" width="800" />
+            <p>Le diagramme montre les différentes entités (Groupe, Festival, Salle, Horaire, Style) ainsi que les relations entre elles, comme expliqué ci-dessous.</p>
+        </section>
+
+        <section>
+            <h2>Entités et Relations du Modèle Relationnel</h2>
+            <p>Ce modèle relationnel a été conçu pour gérer l'organisation d'un concert à Maubeuge. Il comporte plusieurs entités principales :</p>
+
+            <h3>Les entités :</h3>
+            <ul>
+                <li><strong>Groupe</strong> : Représente un groupe de musique avec des informations comme le nom, le téléphone et le montant du cachet.</li>
+                <li><strong>Festival</strong> : Représente un festival où plusieurs concerts peuvent se dérouler, avec des détails comme la date, le tarif d'entrée et le nombre d'entrées vendues.</li>
+                <li><strong>Salle</strong> : Représente la salle de concert, avec des informations sur l'adresse, la capacité et les tarifs.</li>
+                <li><strong>Horaire</strong> : Représente les horaires des concerts dans un festival ou une salle spécifique.</li>
+                <li><strong>Style</strong> : Représente le style musical des groupes ou des concerts (rock, électro, etc.).</li>
+            </ul>
+
+            <h3>Relations entre les entités :</h3>
+            <p>Voici comment ces entités sont liées dans notre modèle relationnel :</p>
+            
+            <ul>
+                <li><strong>Groupe - Festival (Relation Plusieurs à Plusieurs)</strong> : Un groupe peut jouer dans plusieurs festivals, et un festival peut comporter plusieurs groupes. Cela est représenté par la table de jointure <em>Festival_Groupe</em>.</li>
+                <li><strong>Groupe - Style (Relation Plusieurs à Plusieurs)</strong> : Un groupe peut jouer dans plusieurs styles musicaux. Cette relation est modélisée par la table de jointure <em>Groupe_Style</em>.</li>
+                <li><strong>Festival - Salle (Relation 0..1 à 1)</strong> : Un festival se déroule dans une salle spécifique. Chaque festival est lié à une salle où il a lieu. La salle contient des informations comme l'adresse, la capacité et le tarif.</li>
+                <li><strong>Festival - Horaire (Relation 1 à Plusieurs)</strong> : Un festival a plusieurs horaires pour les concerts qui se déroulent au cours de cet événement.</li>
+            </ul>
+
+            <h3>Structure des Tables SQL :</h3>
+            <p>Les tables qui représentent les entités et les relations sont les suivantes :</p>
+
+            <h4>1. Table <strong>Groupe</strong></h4>
+            <pre>
+CREATE TABLE Groupe (
+    idGroupe INT AUTO_INCREMENT PRIMARY KEY,
+    nom TEXT,
+    telephone TEXT,
+    montantCachet NUMERIC
+);
+            </pre>
+
+            <h4>2. Table <strong>Festival</strong></h4>
+            <pre>
+CREATE TABLE Festival (
+    idFestival INT AUTO_INCREMENT PRIMARY KEY,
+    nom TEXT,
+    tarifEntree NUMERIC,
+    dateDebut DATE,
+    dateFin DATE,
+    entreesVendues INT,
+    idSalle INT,
+    FOREIGN KEY (idSalle) REFERENCES Salle(idSalle)
+);
+            </pre>
+
+            <h4>3. Table <strong>Salle</strong></h4>
+            <pre>
+CREATE TABLE Salle (
+    idSalle INT AUTO_INCREMENT PRIMARY KEY,
+    nom TEXT,
+    adresse TEXT,
+    telephone TEXT,
+    gpsLatitude FLOAT,
+    gpsLongitude FLOAT,
+    nbPlaces INT,
+    tarif NUMERIC
+);
+            </pre>
+
+            <h4>4. Table <strong>Horaire</strong></h4>
+            <pre>
+CREATE TABLE Horaire (
+    idHoraire INT AUTO_INCREMENT PRIMARY KEY,
+    horaire TIMESTAMP,
+    idFestival INT,
+    FOREIGN KEY (idFestival) REFERENCES Festival(idFestival)
+);
+            </pre>
+
+            <h4>5. Table <strong>Style</strong></h4>
+            <pre>
+CREATE TABLE Style (
+    idStyle INT AUTO_INCREMENT PRIMARY KEY,
+    style TEXT
+);
+            </pre>
+
+            <h4>6. Table de jointure <strong>Festival_Groupe</strong></h4>
+            <pre>
+CREATE TABLE Festival_Groupe (
+    idFestival INT,
+    idGroupe INT,
+    PRIMARY KEY (idFestival, idGroupe),
+    FOREIGN KEY (idFestival) REFERENCES Festival(idFestival),
+    FOREIGN KEY (idGroupe) REFERENCES Groupe(idGroupe)
+);
+            </pre>
+
+            <h4>7. Table de jointure <strong>Groupe_Style</strong></h4>
+            <pre>
+CREATE TABLE Groupe_Style (
+    idGroupe INT,
+    idStyle INT,
+    PRIMARY KEY (idGroupe, idStyle),
+    FOREIGN KEY (idGroupe) REFERENCES Groupe(idGroupe),
+    FOREIGN KEY (idStyle) REFERENCES Style(idStyle)
+);
+            </pre>
+        </section>
+
+        <!-- Extension Prestataire -->
+        <section>
+            <h2>Extension Prestataire</h2>
+            <p>En tant qu'extension de notre projet, nous avons ajouté une table pour gérer les prestataires qui fournissent des services pour l'organisation du concert (par exemple, sonorisation, éclairage, sécurité, etc.). Cette extension permet de lier les prestataires à des festivals et d'enregistrer leurs informations essentielles.</p>
+
+            <h3>Les entités Prestataire :</h3>
+            <ul>
+                <li><strong>Prestataire</strong> : Représente un prestataire avec des informations comme le nom de l'entreprise, le type de service fourni et les coordonnées.</li>
+                <li><strong>Festival_Prestataire</strong> : Table de jointure qui lie les prestataires aux festivals dans lesquels ils fournissent des services.</li>
+            </ul>
+
+            <h3>Structure des Tables SQL pour l'extension Prestataire :</h3>
+
+            <h4>1. Table <strong>Prestataire</strong></h4>
+            <pre>
+CREATE TABLE Prestataire (
+    idPrestataire INT AUTO_INCREMENT PRIMARY KEY,
+    nomEntreprise TEXT,
+    serviceFournit TEXT,
+    telephone TEXT,
+    email TEXT
+);
+            </pre>
+
+            <h4>2. Table de jointure <strong>Festival_Prestataire</strong></h4>
+            <pre>
+CREATE TABLE Festival_Prestataire (
+    idFestival INT,
+    idPrestataire INT,
+    PRIMARY KEY (idFestival, idPrestataire),
+    FOREIGN KEY (idFestival) REFERENCES Festival(idFestival),
+    FOREIGN KEY (idPrestataire) REFERENCES Prestataire(idPrestataire)
+);
+            </pre>
+
+            <h3>Exemple d'utilisation de cette extension :</h3>
+            <p>Imaginons que le festival "Maubeuge Rocks" engage plusieurs prestataires pour la sonorisation et la sécurité. Ces prestataires seront enregistrés dans la table <strong>Prestataire</strong>, et chaque prestataire sera lié à ce festival via la table de jointure <strong>Festival_Prestataire</strong>.</p>
+        </section>
+        <section>
+            <h2>Réflexion sur le Projet</h2>
+            
+            <h3>Ce que ce projet m'a apporté :</h3>
+            <p>Ce projet a été une excellente occasion de mettre en pratique mes compétences acquises durant ma première année de BUT Informatique. Travailler sur un projet concret m'a permis de comprendre l'importance du modèle relationnel et de la gestion des bases de données dans des projets réels. J'ai appris à créer des tables et des relations en SQL, à réfléchir à la structure de données nécessaire pour répondre aux besoins d'un concert ou d'un festival, et à implémenter une extension (prestataire) qui est devenue un ajout essentiel à l'ensemble du projet.</p>
+            <p>En plus des aspects techniques, ce projet a été une excellente opportunité de travailler en groupe. La collaboration avec mes camarades m'a permis de comprendre l'importance de la communication dans la gestion d'un projet. Chacun de nous a pu se concentrer sur une partie du travail, tout en s'assurant que le projet dans son ensemble restait cohérent et fonctionnel.</p>
+        
+            <h3>Ce que j'ai aimé :</h3>
+            <p>J'ai vraiment apprécié le côté pratique du projet. Passer de la théorie à la mise en place d'un projet concret m'a motivé. Ce que j'ai aimé particulièrement, c'est de voir comment chaque partie du projet (les groupes, les festivals, les prestataires, etc.) interagit et s'intègre dans une base de données. L'extension "Prestataire" a aussi été un ajout intéressant, car cela m'a permis d'explorer la gestion des relations complexes et de comprendre l'importance de l'adaptabilité des systèmes de gestion de bases de données.</p>
+            <p>J'ai aussi aimé travailler avec mes coéquipiers sur ce projet. Chaque membre a pu apporter ses propres compétences et idées, ce qui a enrichi l'expérience. Ce travail en équipe m'a permis d'apprendre de nouvelles méthodes de travail et d'améliorer mes compétences en communication et en gestion de projet.</p>
+        
+            <h3>Ce que je n'ai pas aimé :</h3>
+            <p>Ce que je n'ai pas aimé, c'est la partie qui nécessitait des ajustements constants entre les différentes parties du projet. Par exemple, il était parfois difficile de gérer les différences de compréhension de certaines parties du projet entre les membres de l'équipe. De plus, le travail de base de données (création des tables, gestion des requêtes) était parfois un peu long et répétitif, mais au final, il m'a permis de bien maîtriser cet aspect technique, ce qui est un point positif pour la suite.</p>
+            <p>Enfin, bien que la partie Prestataire soit intéressante, elle a ajouté un peu de complexité à la gestion des relations dans la base de données. Cela a été un défi, mais cela m'a permis d'approfondir ma compréhension des modèles relationnels complexes et des jointures en SQL.</p>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mon Portfolio</p>
+    </footer>
+</body>
+</html>

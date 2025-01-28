@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 3 : Installation d'un poste de développement avec VirtualBox, Samba et SSH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Projet 3 : Installation d'un poste de développement avec VirtualBox, Samba et SSH</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cv.html">Mon CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="projet1.html">Projet 1</a></li>
+                <li><a href="projet2.html">Projet 2</a></li>
+                <li><a href="projet4.html">Projet 4</a></li>
+                <li><a href="projet5.html">Projet 5</a></li>
+                <li><a href="projet6.html">Projet 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Contexte et objectif</h2>
+            <p>Dans ce projet, j'ai configuré un environnement de développement utilisant <strong>VirtualBox</strong> pour exécuter deux systèmes d'exploitation différents, <strong>Linux</strong> et <strong>Windows</strong>, sur une même machine physique. L'objectif était de permettre la communication entre les deux systèmes en utilisant <strong>Samba</strong> pour le partage de fichiers et <strong>SSH</strong> pour l'accès distant sécurisé à la machine Linux.</p>
+            <p>Ce projet m'a permis de découvrir la virtualisation, les principes de mise en réseau entre systèmes et les méthodes d'administration de serveurs distants.</p>
+        </section>
+
+        <section>
+            <h2>Étapes de configuration</h2>
+            <p>Voici les principales étapes que j'ai suivies pour réaliser ce projet :</p>
+            <ol>
+                <li><strong>Installation de VirtualBox :</strong> J'ai installé <em>VirtualBox</em>, un logiciel de virtualisation, sur mon poste de travail. Ce logiciel me permet de créer et gérer des machines virtuelles pour exécuter différents systèmes d'exploitation en parallèle.</li>
+                <li><strong>Installation de Linux et Windows :</strong> J'ai créé deux machines virtuelles. La première exécute <em>Ubuntu Linux</em> et la seconde <em>Windows 10</em>. Chaque système est installé sur une machine virtuelle distincte avec les ressources nécessaires (mémoire, processeur, etc.).</li>
+                <li><strong>Configuration réseau :</strong> Pour que les machines virtuelles puissent communiquer entre elles, j'ai configuré le réseau de VirtualBox en mode <em>réseau interne</em>, ce qui permet aux deux machines d'être sur le même réseau local privé.</li>
+                <li><strong>Installation de Samba sur Linux :</strong> J'ai installé <em>Samba</em> sur la machine Linux afin de permettre le partage de fichiers avec Windows. Cela permet à la machine Windows d'accéder à des dossiers spécifiques sur la machine Linux.</li>
+                <li><strong>Configuration de Samba :</strong> Après avoir installé Samba, j'ai configuré les fichiers de partage (/etc/samba/smb.conf) pour définir les répertoires partagés et permettre l'accès depuis la machine Windows.</li>
+                <li><strong>Test de la communication Samba :</strong> J'ai vérifié que le partage de fichiers fonctionne en accédant aux répertoires partagés depuis Windows via l'explorateur de fichiers. La machine Windows peut maintenant lire et écrire dans les dossiers partagés de Linux.</li>
+                <li><strong>Installation et configuration de SSH sur Linux :</strong> J'ai installé le serveur <em>OpenSSH</em> sur la machine Linux pour permettre une connexion sécurisée via le protocole SSH depuis Windows ou d'autres machines.</li>
+                <li><strong>Connexion SSH depuis Windows :</strong> J'ai utilisé un client SSH sur Windows (comme <em>PuTTY</em>) pour me connecter à la machine Linux à distance, ce qui me permet d'exécuter des commandes à partir de la ligne de commande de Windows tout en contrôlant la machine Linux.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Problèmes rencontrés et solutions</h2>
+            <p>Tout au long de ce projet, j'ai rencontré plusieurs problèmes que j'ai dû résoudre :</p>
+            <ul>
+                <li><strong>Problème de réseau entre les machines virtuelles :</strong> Au départ, les machines virtuelles ne parvenaient pas à se connecter entre elles. J'ai résolu ce problème en vérifiant les paramètres de réseau dans VirtualBox et en m'assurant qu'elles étaient bien sur le même réseau interne.</li>
+                <li><strong>Problème de permission Samba :</strong> Lors de l'accès aux fichiers partagés sur Linux depuis Windows, un problème de permission est apparu. J'ai résolu cela en ajustant les paramètres de permissions dans les fichiers de configuration de Samba pour autoriser l'accès en lecture et en écriture aux utilisateurs de Windows.</li>
+                <li><strong>Problème d'authentification SSH :</strong> J'ai eu un problème de connexion SSH dû à une mauvaise configuration de l'utilisateur Linux. J'ai corrigé cela en vérifiant les fichiers de configuration d'OpenSSH et en m'assurant que l'utilisateur avait bien les permissions nécessaires pour se connecter via SSH.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tests et validation</h2>
+            <p>Une fois toutes les configurations terminées, j'ai effectué des tests pour m'assurer que tout fonctionnait correctement :</p>
+            <ul>
+                <li><strong>Test Samba :</strong> J'ai vérifié que les répertoires partagés sur Linux étaient accessibles depuis Windows. Cela a permis de tester la connexion réseau et le partage de fichiers.</li>
+                <li><strong>Test SSH :</strong> J'ai testé la connexion SSH en accédant à la machine Linux depuis Windows via <em>PuTTY</em>, et cela a fonctionné comme prévu. J'ai pu exécuter des commandes Linux à distance et manipuler des fichiers.</li>
+                <li><strong>Test de la communication réseau :</strong> J'ai vérifié que les machines pouvaient se pinger entre elles en utilisant les adresses IP locales assignées dans VirtualBox. La communication a été réussie.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Ce que j'ai aimé</h3>
+            <p>- L'installation et la configuration d'un environnement complet pour le développement sur deux systèmes d'exploitation différents.</p>
+            <p>- L'apprentissage de la gestion de serveur et de partage de fichiers via Samba, ainsi que l'utilisation de SSH pour contrôler les machines à distance.</p>
+            <p>- La résolution de problèmes techniques qui m'ont permis d'améliorer mes compétences en gestion de systèmes.</p>
+        
+            <h3>Ce que j'ai pas aimé</h3>
+            <p>- Le fait que l'installation initiale de certains outils (comme Samba) ait pris plus de temps que prévu.</p>
+            <p>- Les petites difficultés de communication entre Linux et Windows, notamment au début, qui ont nécessité pas mal de dépannage.</p>
+        </section>
+        <section>
+            <h2>Conclusion</h2>
+            <p>Ce projet m'a permis de comprendre la virtualisation et la configuration de machines virtuelles sur un même poste de travail. J'ai également acquis des compétences en gestion des réseaux entre machines, en partage de fichiers via Samba, et en administration système via SSH. Cette expérience m'a donné une meilleure compréhension de la manière dont différents systèmes peuvent être configurés pour travailler ensemble dans un environnement de développement.</p>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mon Portfolio</p>
+    </footer>
+</body>
+</html>
