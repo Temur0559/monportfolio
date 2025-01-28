@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #f7f9fc; /* Fond clair (gris très pâle) */
-    color: #333; /* Texte sombre pour un contraste agréable */
+    background: #f7f9fc;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -18,12 +18,12 @@ a {
 }
 
 h1, h2, h3 {
-    color: #2c3e50; /* Couleur gris foncé pour les titres */
+    color: #2c3e50;
 }
 
 /* Header */
 header {
-    background: #2980b9; /* Bleu professionnel */
+    background: #2980b9;
     color: white;
     padding: 40px 0;
     text-align: center;
@@ -56,7 +56,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #f1c40f; /* Jaune lumineux au survol */
+    color: #f1c40f;
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.2);
 }
@@ -66,14 +66,14 @@ main {
     max-width: 1200px;
     margin: 30px auto;
     padding: 40px;
-    background-color: white; /* Fond blanc pour les sections */
+    background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
 section {
     margin-bottom: 40px;
-    background: #ecf0f1; /* Fond clair et doux */
+    background: #ecf0f1;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -83,13 +83,13 @@ h2 {
     font-size: 2.5rem;
     margin-top: 20px;
     text-align: center;
-    color: #2980b9; /* Bleu foncé pour accentuer les titres */
+    color: #2980b9;
     font-weight: 700;
 }
 
 h3 {
     font-size: 1.5rem;
-    color: #2c3e50; /* Gris foncé pour sous-titres */
+    color: #2c3e50;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -97,19 +97,20 @@ h3 {
 /* Code Styling (Projet 2) */
 code {
     display: block;
-    white-space: pre-wrap; /* Permet de revenir à la ligne automatiquement pour le code */
-    word-wrap: break-word; /* Empêche le débordement du texte */
+    white-space: pre-wrap;
+    word-wrap: break-word;
     padding: 15px;
-    background: #2c3e50; /* Fond foncé pour le code */
-    color: white; /* Texte clair */
+    background: #2c3e50;
+    color: white;
     border-radius: 5px;
     margin-bottom: 20px;
-    font-family: 'Courier New', monospace; /* Police spécifique au code */
+    font-family: 'Courier New', monospace;
+    overflow-x: auto; /* Pour éviter que le code dépasse */
 }
 
 /* Boutons */
 .btn {
-    background: #f39c12; /* Jaune/orange */
+    background: #f39c12;
     color: white;
     padding: 15px 30px;
     text-align: center;
@@ -125,7 +126,7 @@ code {
 }
 
 .btn:hover {
-    background: #e67e22; /* Couleur plus sombre pour le survol */
+    background: #e67e22;
     transform: scale(1.05);
 }
 
@@ -145,10 +146,10 @@ img {
 footer {
     text-align: center;
     padding: 20px;
-    background: #34495e; /* Bleu-gris */
+    background: #34495e;
     color: white;
     margin-top: 40px;
-    border-top: 3px solid #f39c12; /* Jaune pour ajouter du contraste */
+    border-top: 3px solid #f39c12;
 }
 
 /* Responsive Design */
@@ -163,14 +164,12 @@ footer {
         margin: 10px 0;
     }
 
-    /* Adapter les boutons pour mobile */
     .btn {
         width: 100%;
         padding: 15px;
         font-size: 16px;
     }
 
-    /* Adapter les images */
     img {
         max-width: 100%;
     }
@@ -187,19 +186,21 @@ footer {
         font-size: 1.4rem;
     }
 
-    /* Ajuster les titres pour les écrans moyens */
-    header h1 {
-        font-size: 2rem;
-    }
-
-    /* Améliorer la mise en page des sections */
     section {
         padding: 15px;
         margin-bottom: 30px;
     }
+
+    /* Fixes for Code section overflow */
+    code {
+        font-size: 14px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        padding: 10px;
+        overflow-x: auto; /* Allow horizontal scrolling */
+    }
 }
 
-/* Responsive pour très petits écrans (max-width: 480px) */
 @media (max-width: 480px) {
     header h1 {
         font-size: 1.8rem;
@@ -209,7 +210,6 @@ footer {
         font-size: 16px;
     }
 
-    /* Améliorer les marges et les paddings */
     main {
         padding: 15px;
     }
@@ -232,22 +232,20 @@ footer {
         font-size: 14px;
     }
 
-    /* Améliorer les bulles de texte (sections) pour les petits écrans */
     section {
-        padding: 20px; /* Augmenter le padding pour mieux entourer le texte */
+        padding: 15px;
         margin-bottom: 20px;
     }
 
-    /* S'assurer que les images soient adaptées */
     img {
-        width: 100%; /* S'assurer que les images s'adaptent à la largeur */
-        height: auto; /* Garder les proportions */
+        width: 100%;
     }
 
-    /* Ajuster le code pour éviter le débordement */
+    /* Fix code block on small screens */
     code {
+        font-size: 12px;
         white-space: pre-wrap;
         word-wrap: break-word;
-        font-size: 14px; /* Réduire la taille du texte du code */
+        padding: 8px;
     }
 }
