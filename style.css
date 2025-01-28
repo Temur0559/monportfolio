@@ -178,6 +178,12 @@ footer {
     header h1 {
         font-size: 2rem;
     }
+
+    /* Améliorer la mise en page des sections */
+    section {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
 }
 
 /* Responsive pour très petits écrans (max-width: 480px) */
@@ -211,5 +217,17 @@ footer {
     footer {
         padding: 15px;
         font-size: 14px;
+    }
+
+    /* Améliorer les bulles de texte (sections) pour les petits écrans */
+    section {
+        padding: 20px; /* Augmenter le padding pour mieux entourer le texte */
+        margin-bottom: 20px;
+    }
+
+    /* S'assurer que les images soient adaptées */
+    img {
+        width: 100%; /* S'assurer que les images s'adaptent à la largeur */
+        height: auto; /* Garder les proportions */
     }
 }
