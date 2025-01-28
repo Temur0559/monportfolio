@@ -108,6 +108,7 @@ h3 {
     letter-spacing: 1px;
     transition: background 0.3s ease, transform 0.2s ease;
     margin: 20px 0;
+    width: auto;
 }
 
 .btn:hover {
@@ -149,11 +150,14 @@ footer {
         margin: 10px 0;
     }
 
+    /* Adapter les boutons pour mobile */
     .btn {
         width: 100%;
-        text-align: center;
+        padding: 15px;
+        font-size: 16px;
     }
 
+    /* Adapter les images */
     img {
         max-width: 100%;
     }
@@ -169,8 +173,14 @@ footer {
     h3 {
         font-size: 1.4rem;
     }
+
+    /* Ajuster les titres pour les écrans moyens */
+    header h1 {
+        font-size: 2rem;
+    }
 }
 
+/* Responsive pour très petits écrans (max-width: 480px) */
 @media (max-width: 480px) {
     header h1 {
         font-size: 1.8rem;
@@ -178,5 +188,28 @@ footer {
 
     header nav ul li {
         font-size: 16px;
+    }
+
+    /* Améliorer les marges et les paddings */
+    main {
+        padding: 15px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 14px;
     }
 }
