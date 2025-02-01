@@ -160,9 +160,15 @@ footer a:hover {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+
+/* Tablettes et petits écrans (max-width: 1024px) */
+@media (max-width: 1024px) {
   .container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* Affichage sur deux colonnes */
+  }
+
+  .navbar a {
+    font-size: 1rem;
   }
 
   .hero h1 {
@@ -170,26 +176,95 @@ footer a:hover {
   }
 
   .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .hero .btn {
-    font-size: 1rem;
-    padding: 10px 20px;
+    font-size: 1.1rem;
+    padding: 8px 25px;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  .item h3 {
+    font-size: 1.3rem;
+  }
+
+  .item p {
+    font-size: 0.95rem;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobiles (max-width: 768px) */
+@media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr; /* Affichage en 1 à 2 colonnes */
+  }
+
+  .navbar {
+    padding: 1rem;
   }
 
   .navbar a {
+    font-size: 0.9rem;
     margin: 0 10px;
+  }
+
+  .hero {
+    height: 80vh;
+    background-size: cover;
   }
 
   .hero h1 {
     font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero .btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  section p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .item {
+    padding: 15px;
+  }
+
+  .item h3 {
+    font-size: 1.2rem;
+  }
+
+  .item p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobiles très petits (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr; /* Affichage en une seule colonne */
+  }
+
+  .navbar {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
   }
 
   .hero p {
@@ -199,5 +274,25 @@ footer a:hover {
   .hero .btn {
     font-size: 1rem;
     padding: 8px 20px;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  section p {
+    font-size: 0.95rem;
+  }
+
+  .item {
+    padding: 10px;
+  }
+
+  .item h3 {
+    font-size: 1.1rem;
+  }
+
+  .item p {
+    font-size: 0.85rem;
   }
 }
