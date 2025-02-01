@@ -11,26 +11,21 @@ body {
     color: #333;
     line-height: 1.6;
     font-size: 16px;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-h1, h2, h3 {
-    color: #2c3e50;
+    background-image: url('votre-image-de-fond.jpg'); /* Remplace 'votre-image-de-fond.jpg' par ton image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    background: linear-gradient(135deg, rgba(41, 128, 185, 0.8), rgba(142, 68, 173, 0.8));
     color: white;
     padding: 100px 20px;
     text-align: center;
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
     position: relative;
-    overflow: hidden;
+    z-index: 1;
 }
 
 header h1 {
@@ -56,7 +51,7 @@ header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Utilisation de flexbox pour les aligner horizontalement */
+    display: flex;
     gap: 20px;
 }
 
@@ -84,17 +79,34 @@ main {
     max-width: 1200px;
     margin: 30px auto;
     padding: 50px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with some transparency */
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.cv-container {
+    position: relative;
+    width: 100%;
+    padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-section {
-    margin-bottom: 40px;
-    background: #ecf0f1;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.cv-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.cv-content {
+    position: relative;
+    z-index: 1;
 }
 
 h2 {
@@ -112,21 +124,7 @@ h3 {
     text-align: center;
 }
 
-/* Code Styling */
-code {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding: 20px;
-    background: #2c3e50;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-family: 'Courier New', monospace;
-    overflow-x: auto;
-}
-
-/* Buttons */
+/* Button */
 .btn {
     background: #f39c12;
     color: white;
@@ -139,24 +137,12 @@ code {
     font-weight: bold;
     letter-spacing: 1px;
     transition: background 0.3s ease, transform 0.3s ease;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 .btn:hover {
     background: #e67e22;
     transform: scale(1.05);
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
@@ -167,26 +153,10 @@ footer {
     color: white;
     margin-top: 40px;
     border-top: 3px solid #f39c12;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
-footer .footer-links {
-    display: flex;
-    gap: 20px;
-}
-
-footer a {
-    color: white;
+footer p {
     font-size: 16px;
-    padding: 10px;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #f39c12;
 }
 
 /* Hide Scroll Button (if it appears) */
