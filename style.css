@@ -245,4 +245,50 @@ footer {
         font-size: 12px;
         padding: 10px;
     }
-} 
+}
+
+/* Conteneur pour les liens de navigation défilants */
+.nav-container {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+.nav-container ul {
+    display: flex;
+    flex-wrap: nowrap;
+    animation: scrolling 10s linear infinite;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-container ul li {
+    margin-right: 20px; /* Espacement entre les liens */
+    flex-shrink: 0; /* Les liens ne se cassent pas en ligne */
+}
+
+.nav-container ul li a {
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    background: #2980b9;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+}
+
+.nav-container ul li a:hover {
+    background: #f39c12;
+    transform: scale(1.05);
+}
+
+/* Animation de défilement */
+@keyframes scrolling {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
