@@ -7,9 +7,10 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #f7f9fc;
+    background: #f0f4f8; /* Fond clair pour l'ensemble du site */
     color: #333;
     line-height: 1.6;
+    font-size: 16px;
 }
 
 a {
@@ -23,64 +24,80 @@ h1, h2, h3 {
 
 /* Header */
 header {
-    background: #2980b9;
+    background: linear-gradient(135deg, #2980b9, #8e44ad); /* Dégradé élégant */
     color: white;
-    padding: 40px 0;
+    padding: 100px 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+header nav {
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: inline-flex;
+    gap: 20px;
 }
 
 header nav ul li {
     display: inline-block;
-    margin: 0 20px;
 }
 
 header nav ul li a {
     color: white;
     font-size: 18px;
-    transition: color 0.3s, transform 0.3s;
-    padding: 10px 15px;
+    padding: 12px 30px;
     border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s, transform 0.3s;
 }
 
 header nav ul li a:hover {
-    color: #f1c40f;
+    background: rgba(255, 255, 255, 0.4);
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
+    color: #f39c12;
 }
 
 /* Main Content */
 main {
     max-width: 1200px;
     margin: 30px auto;
-    padding: 40px;
+    padding: 50px;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 section {
     margin-bottom: 40px;
     background: #ecf0f1;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-top: 20px;
     text-align: center;
     color: #2980b9;
@@ -88,31 +105,31 @@ h2 {
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #2c3e50;
     margin-bottom: 20px;
     text-align: center;
 }
 
-/* Code Styling (Projet 2) */
+/* Code Styling */
 code {
     display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
-    padding: 15px;
+    padding: 20px;
     background: #2c3e50;
     color: white;
     border-radius: 5px;
     margin-bottom: 20px;
     font-family: 'Courier New', monospace;
-    overflow-x: auto; /* Pour éviter que le code dépasse */
+    overflow-x: auto;
 }
 
-/* Boutons */
+/* Buttons */
 .btn {
     background: #f39c12;
     color: white;
-    padding: 15px 30px;
+    padding: 15px 35px;
     text-align: center;
     display: inline-block;
     border-radius: 50px;
@@ -120,9 +137,8 @@ code {
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
     margin: 20px 0;
-    width: auto;
 }
 
 .btn:hover {
@@ -139,28 +155,32 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #34495e;
+    padding: 30px;
+    background: linear-gradient(135deg, #34495e, #2c3e50); /* Dégradé moderne pour le bas */
     color: white;
     margin-top: 40px;
     border-top: 3px solid #f39c12;
 }
 
+/* Hide Scroll Button (if it appears) */
+.scroll-to-top {
+    display: none !important; /* Cacher le bouton si c'est un bouton de remontée */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     header nav ul {
-        text-align: center;
+        flex-direction: column;
         padding: 0;
     }
 
     header nav ul li {
-        display: block;
         margin: 10px 0;
     }
 
@@ -175,11 +195,11 @@ footer {
     }
 
     main {
-        padding: 20px;
+        padding: 30px;
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     h3 {
@@ -187,23 +207,17 @@ footer {
     }
 
     section {
-        padding: 15px;
-        margin-bottom: 30px;
+        padding: 20px;
     }
 
-    /* Fixes for Code section overflow */
     code {
         font-size: 14px;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        padding: 10px;
-        overflow-x: auto; /* Allow horizontal scrolling */
     }
 }
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     header nav ul li {
@@ -211,7 +225,7 @@ footer {
     }
 
     main {
-        padding: 15px;
+        padding: 20px;
     }
 
     .btn {
@@ -228,24 +242,20 @@ footer {
     }
 
     footer {
-        padding: 15px;
+        padding: 20px;
         font-size: 14px;
     }
 
     section {
         padding: 15px;
-        margin-bottom: 20px;
     }
 
     img {
         width: 100%;
     }
 
-    /* Fix code block on small screens */
     code {
         font-size: 12px;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        padding: 8px;
+        padding: 10px;
     }
 }
