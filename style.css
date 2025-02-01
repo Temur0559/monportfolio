@@ -102,6 +102,7 @@ main {
     object-fit: cover;
     border-radius: 15px;
     z-index: -1;
+    object-position: center;  /* Cette propriété garantit que l'image reste bien centrée */
 }
 
 .cv-content {
@@ -167,27 +168,27 @@ footer p {
 /* Responsive Design */
 @media (max-width: 768px) {
     header nav ul {
-        flex-direction: row;
-        overflow-x: scroll;
+        flex-direction: column; /* Menu en colonne sur les petites résolutions */
         padding: 10px;
+        gap: 15px;
     }
 
     header nav ul li {
-        margin: 0 15px;
+        margin: 5px 0;
     }
 
     .btn {
-        width: auto;
-        padding: 10px 30px;
+        width: 100%;
+        padding: 15px;
         font-size: 16px;
-    }
-
-    img {
-        max-width: 100%;
     }
 
     main {
         padding: 30px;
+    }
+
+    .cv-container {
+        padding: 20px; /* Réduction du padding sur petits écrans */
     }
 
     h2 {
@@ -198,22 +199,9 @@ footer p {
         font-size: 1.4rem;
     }
 
-    section {
-        padding: 20px;
-    }
-
     footer {
         flex-direction: column;
         padding: 20px;
-    }
-
-    footer .footer-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    footer a {
-        font-size: 14px;
     }
 }
 
@@ -248,12 +236,12 @@ footer p {
         font-size: 14px;
     }
 
-    section {
-        padding: 15px;
+    .cv-container {
+        padding: 10px;
     }
 
     img {
-        width: 100%;
+        width: 100%; /* L'image doit s'ajuster à la largeur de l'écran */
     }
 
     code {
