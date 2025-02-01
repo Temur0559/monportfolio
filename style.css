@@ -37,20 +37,25 @@ header h1 {
     font-weight: 700;
 }
 
-header nav ul {
+/* Menu */
+nav {
+    position: relative;
+}
+
+#nav-links {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    transition: transform 0.3s ease;
 }
 
-header nav ul li {
+#nav-links li {
     margin: 0 15px;
 }
 
-header nav ul li a {
+#nav-links li a {
     color: white;
     font-size: 18px;
     padding: 12px 25px;
@@ -59,10 +64,62 @@ header nav ul li a {
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
-header nav ul li a:hover {
+#nav-links li a:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: translateY(-5px);
     color: #f39c12;
+}
+
+/* Hamburger menu */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    /* Hide regular menu and show hamburger */
+    #nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        background-color: #34495e;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        transform: translateY(-100%);
+    }
+
+    /* Show hamburger menu */
+    .menu-toggle {
+        display: flex;
+    }
+
+    #nav-links.active {
+        display: block;
+        transform: translateY(0);
+    }
+
+    #nav-links li {
+        margin: 20px 0;
+    }
+
+    #nav-links li a {
+        font-size: 22px;
+        padding: 15px 20px;
+    }
 }
 
 /* Main Content */
@@ -84,35 +141,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    font-size: 2.8rem;
-    margin-top: 20px;
-    text-align: center;
-    color: #2980b9;
-    font-weight: 700;
-}
-
-h3 {
-    font-size: 1.6rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Code Styling */
-code {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding: 20px;
-    background: #2c3e50;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-family: 'Courier New', monospace;
-    overflow-x: auto;
-}
-
 /* Buttons */
 .btn {
     background: #f39c12;
@@ -132,18 +160,6 @@ code {
 .btn:hover {
     background: #e67e22;
     transform: scale(1.05);
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
@@ -191,58 +207,9 @@ footer {
 
     section {
         padding: 20px;
-        background: #ecf0f1;  /* Added a background color here */
-        margin-bottom: 20px;  /* Add some margin between sections */
     }
 
     code {
         font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header nav ul li {
-        font-size: 16px;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 12px;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-    }
-
-    footer {
-        padding: 20px;
-        font-size: 14px;
-    }
-
-    section {
-        padding: 15px;
-        background: #ecf0f1;  /* Ensure the section background color is visible */
-        margin-bottom: 15px;  /* Add spacing between sections */
-    }
-
-    img {
-        width: 100%;  /* Ensure images fill their container on small screens */
-    }
-
-    code {
-        font-size: 12px;
-        padding: 10px;
     }
 }
