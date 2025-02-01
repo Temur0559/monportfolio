@@ -37,18 +37,22 @@ header h1 {
     font-weight: 700;
 }
 
+header nav {
+    overflow-x: auto; /* Permet le défilement horizontal */
+    white-space: nowrap; /* Evite que les éléments s'empilent */
+    padding: 10px 0;
+}
+
 header nav ul {
     list-style: none;
+    display: inline-flex;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    animation: scrolling 10s linear infinite;
 }
 
 header nav ul li {
-    margin-right: 20px; /* Espacement entre les liens */
-    flex-shrink: 0; /* Les liens ne se cassent pas en ligne */
+    margin-right: 20px;
+    flex-shrink: 0; /* Empêche la rétrécissement des éléments */
 }
 
 header nav ul li a {
@@ -64,16 +68,6 @@ header nav ul li a:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: translateY(-5px);
     color: #f39c12;
-}
-
-/* Animation de défilement */
-@keyframes scrolling {
-    0% {
-        transform: translateX(100%); /* Commence à droite */
-    }
-    100% {
-        transform: translateX(-100%); /* Défile à gauche */
-    }
 }
 
 /* Main Content */
@@ -167,20 +161,15 @@ footer {
     border-top: 3px solid #f39c12;
 }
 
-/* Responsive Design for smaller screens (Phones) */
+/* Responsive Design */
 @media (max-width: 768px) {
     header nav ul {
-        flex-direction: column;
-        padding: 0;
+        flex-direction: row;
     }
 
-    header nav ul li {
-        margin: 10px 0;
-    }
-
-    /* Applique le défilement horizontal uniquement pour les petits écrans */
-    header nav ul {
-        animation: scrolling 10s linear infinite;
+    header nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Assure un défilement fluide sur mobile */
     }
 
     .btn {
@@ -260,12 +249,5 @@ footer {
     code {
         font-size: 12px;
         padding: 10px;
-    }
-}
-
-/* Mobile-specific adjustments */
-@media (max-width: 480px) {
-    header nav ul {
-        animation: scrolling 15s linear infinite;
     }
 }
