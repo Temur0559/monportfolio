@@ -149,8 +149,8 @@ code {
 
 /* Social Icons */
 .social-icon {
-    width: 25px; /* Ajuster la taille du logo */
-    height: 25px;
+    width: 50px; /* Taille du logo LinkedIn ajustée */
+    height: 50px;
     transition: transform 0.3s ease;
 }
 
