@@ -41,22 +41,11 @@ header h1 {
     text-transform: uppercase;
 }
 
-header p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-}
-
-header nav {
-    overflow-x: auto;
-    white-space: nowrap;
-    margin-bottom: 20px;
-}
-
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Utilisation de flexbox pour les aligner horizontalement */
+    display: flex;
     gap: 20px;
 }
 
@@ -105,69 +94,21 @@ h2 {
     font-weight: 700;
 }
 
-h3 {
-    font-size: 1.6rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-align: center;
+/* Social Icon and LinkedIn Text Alignment */
+.linkedin-link {
+    display: flex;
+    align-items: center;  /* Aligne l'icône et le texte */
+    gap: 10px;            /* Espace entre l'icône et le texte */
 }
 
-/* Code Styling */
-code {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding: 20px;
-    background: #2c3e50;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-family: 'Courier New', monospace;
-    overflow-x: auto;
-}
-
-/* Buttons */
-.btn {
-    background: #f39c12;
-    color: white;
-    padding: 12px 30px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 50px;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-top: 20px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-    background: #e67e22;
-    transform: scale(1.05);
-}
-
-/* Social Icons */
 .social-icon {
-    width: 50px; /* Taille du logo LinkedIn ajustée */
-    height: 50px;
+    width: 25px; /* Taille ajustée de l'icône LinkedIn */
+    height: 25px;
     transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
     transform: scale(1.2);
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
@@ -202,26 +143,6 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header nav ul {
-        flex-direction: row;
-        overflow-x: scroll;
-        padding: 10px;
-    }
-
-    header nav ul li {
-        margin: 0 15px;
-    }
-
-    .btn {
-        width: auto;
-        padding: 10px 30px;
-        font-size: 16px;
-    }
-
-    img {
-        max-width: 100%;
-    }
-
     main {
         padding: 30px;
     }
@@ -230,70 +151,12 @@ footer a:hover {
         font-size: 2.2rem;
     }
 
-    h3 {
-        font-size: 1.4rem;
-    }
-
-    section {
-        padding: 20px;
+    .social-icon {
+        width: 20px;
+        height: 20px;
     }
 
     footer {
         flex-direction: column;
-        padding: 20px;
-    }
-
-    footer .footer-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    footer a {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header nav ul li {
-        font-size: 16px;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 12px;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-    }
-
-    footer {
-        padding: 20px;
-        font-size: 14px;
-    }
-
-    section {
-        padding: 15px;
-    }
-
-    img {
-        width: 100%;
-    }
-
-    code {
-        font-size: 12px;
-        padding: 10px;
     }
 }
