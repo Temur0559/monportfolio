@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #f0f4f8; /* Fond clair pour l'ensemble du site */
+    background: #f0f4f8;
     color: #333;
     line-height: 1.6;
     font-size: 16px;
@@ -24,7 +24,7 @@ h1, h2, h3 {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #2980b9, #8e44ad); /* Dégradé élégant */
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -49,13 +49,14 @@ header p {
 header nav {
     overflow-x: auto;
     white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: inline-flex;
+    display: flex; /* Utilisation de flexbox pour les aligner horizontalement */
     gap: 20px;
 }
 
@@ -162,31 +163,52 @@ img {
 footer {
     text-align: center;
     padding: 30px;
-    background: linear-gradient(135deg, #34495e, #2c3e50); /* Dégradé moderne pour le bas */
+    background: linear-gradient(135deg, #34495e, #2c3e50);
     color: white;
     margin-top: 40px;
     border-top: 3px solid #f39c12;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer .footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+footer a {
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #f39c12;
 }
 
 /* Hide Scroll Button (if it appears) */
 .scroll-to-top {
-    display: none !important; /* Cacher le bouton si c'est un bouton de remontée */
+    display: none !important;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     header nav ul {
-        flex-direction: column;
-        padding: 0;
+        flex-direction: row;
+        overflow-x: scroll;
+        padding: 10px;
     }
 
     header nav ul li {
-        margin: 10px 0;
+        margin: 0 15px;
     }
 
     .btn {
-        width: 100%;
-        padding: 15px;
+        width: auto;
+        padding: 10px 30px;
         font-size: 16px;
     }
 
@@ -210,7 +232,17 @@ footer {
         padding: 20px;
     }
 
-    code {
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    footer .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer a {
         font-size: 14px;
     }
 }
