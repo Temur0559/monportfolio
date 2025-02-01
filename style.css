@@ -10,7 +10,7 @@ body {
     background: #f0f4f8;
     color: #333;
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 16px; /* Taille par défaut de la police */
 }
 
 a {
@@ -34,7 +34,7 @@ header {
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 4rem; /* Augmenter la taille de la police pour PC */
     margin-bottom: 20px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -42,7 +42,7 @@ header h1 {
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Augmenter légèrement la taille de la police */
     margin-bottom: 40px;
 }
 
@@ -98,7 +98,7 @@ section {
 }
 
 h2 {
-    font-size: 2.8rem;
+    font-size: 3rem; /* Taille plus grande pour une meilleure lisibilité sur PC */
     margin-top: 20px;
     text-align: center;
     color: #2980b9;
@@ -106,7 +106,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* Augmenter la taille de la police pour PC */
     color: #2c3e50;
     margin-bottom: 20px;
     text-align: center;
