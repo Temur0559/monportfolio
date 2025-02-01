@@ -191,6 +191,8 @@ footer {
 
     section {
         padding: 20px;
+        background: #ecf0f1;  /* Added a background color here */
+        margin-bottom: 20px;  /* Add some margin between sections */
     }
 
     code {
@@ -231,10 +233,12 @@ footer {
 
     section {
         padding: 15px;
+        background: #ecf0f1;  /* Ensure the section background color is visible */
+        margin-bottom: 15px;  /* Add spacing between sections */
     }
 
     img {
-        width: 100%;  /* Image width should always scale down for mobile */
+        width: 100%;  /* Ensure images fill their container on small screens */
     }
 
     code {
